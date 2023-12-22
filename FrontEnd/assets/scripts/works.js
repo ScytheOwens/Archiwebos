@@ -7,23 +7,47 @@ async function fetchWorks() {
 fetchWorks().then(works => {
     works;
 
-    window.onload=function() {
+    function displayWorks(toDisplay) {
         const galleryElement = document.querySelector('.gallery');
-        galleryElement.innerHTML = '';
-    
-        for (let i = 0; i < works.length; i++) {
-            const work = works[i];
+        galleryElement.innerHTML = "";
+        
+        for (let i = 0; i < toDisplay.length; i++) {
+            const work = toDisplay[i];
             const figureElement = document.createElement('figure');
             const imageElement = document.createElement('img');
             const captionElement = document.createElement('figcaption');
-
+            
             imageElement.src = work.imageUrl;
             imageElement.alt = work.title;
             captionElement.innerText = work.title;
-
+            
             galleryElement.appendChild(figureElement);
             figureElement.appendChild(imageElement);
             figureElement.appendChild(captionElement)
         }
+    }
+    
+    window.onload=function() {
+        displayWorks(works);
+    };
+    
+    const allBtn = document.querySelector('.all-filter');
+    allBtn.addEventListener('click', function() {
+        displayWorks(works);
+    } )
+
+    const categoryBtn = document.querySelectorAll('.category-filter');
+
+    // Le filtre fonctionne, mais pour hôtel, il est accent sensitive (à régler)
+    
+    for (let i = 0; i < categoryBtn.length; i++) {
+        categoryBtn[i].addEventListener('click', function() {
+            const worksToDisplay = works.filter(function (work) {
+                console.log(work.category.name);
+                return work.category.name === categoryBtn[i].innerText;
+            });
+
+            displayWorks(worksToDisplay)
+        } )
     }
 } )
