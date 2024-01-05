@@ -37,14 +37,11 @@ fetchWorks().then(works => {
     } )
 
     const categoryBtn = document.querySelectorAll('.category-filter');
-
-    // Le filtre fonctionne, mais pour hôtel, il est accent sensitive (à régler)
     
     for (let i = 0; i < categoryBtn.length; i++) {
         categoryBtn[i].addEventListener('click', function() {
             const worksToDisplay = works.filter(function (work) {
-                console.log(work.category.name);
-                return work.category.name === categoryBtn[i].innerText;
+                return work.category.name === categoryBtn[i].innerText.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
             });
 
             displayWorks(worksToDisplay)
