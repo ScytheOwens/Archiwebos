@@ -45,6 +45,7 @@ window.onload=function() {
 
             if (message["token"]) {
                 const token = message["token"];
+                sessionStorage.setItem('token', token)
                 window.location.replace("index.html");
             }
         }

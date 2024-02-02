@@ -154,7 +154,7 @@ li:hover {
 	text-align: center;
 }
 
-.filter-btn {
+.btn {
 	background-color: transparent;
 	border: 1px solid #1D6154;
 	border-radius: 60px;
@@ -166,7 +166,7 @@ li:hover {
 	padding: 9px;
 }
 
-.filter-btn:hover {
+.btn:hover {
 	cursor: pointer;
 }
 
@@ -259,7 +259,7 @@ footer {
 	bottom: 0;
 	height: 3.8rem;
 	margin-top: 45px;
-	position: absolute;
+	position: relative;
 	right: 0;
 }
 
@@ -275,4 +275,93 @@ footer nav ul {
 
 footer nav ul li {
 	margin-right: 107px;
+}
+
+.modal-link {
+	background-color: black;
+	color: white;
+	display: block;
+	height: 59px;
+	line-height: 59px;
+	text-align: center;
+	text-decoration: none;
+	width: 100%;
+}
+
+.modal-box {
+	background-color: rgba(0, 0, 0, 0.3);
+	display: flex;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+.modal-box-dialog {
+	background-color: white;
+	border-radius: 10px;
+	margin: auto;
+	padding: 45px 105px;
+	position: relative;
+	text-align: center;
+	width: 630px;
+}
+
+.modal-box-dialog-title {
+	color: black;
+	font-size: 26px;
+	padding-top: 25px;
+}
+
+.modal-box-dialog-content {
+	border-bottom: 1px solid #B3B3B3;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	margin-top: 46px;
+	padding-bottom: 46px;
+}
+
+.modal-box-dialog-content > figure {
+	position: relative;
+}
+
+.modal-box-dialog-close {
+	background-color: white;
+	border: none;
+	font-size: 21px;
+	position: absolute;
+	right: 30px;
+	top: 26px;
+}
+
+.delete-button {
+	align-items: center;
+	background-color: #000;
+	border: none;
+	border-radius: 3px;
+	color: #fff;
+	display: flex;
+	height: 17px;
+	justify-content: center;
+	padding: 0;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	width: 17px;
+}
+
+.fa-trash-can {
+	font-size: smaller;
+}
+
+.modal-box-dialog-close:hover, .delete-button:hover {
+	cursor: pointer;
+}
+
+.modal-box-dialog-button {
+	margin-left: 0;
+	margin-top: 28px;
+}
+
+.hidden {
+	display: none;
 }
