@@ -1,68 +1,32 @@
-import { editionMode } from "./modale.js";
+export function displayWorks(toDisplay, editMode, gallery) {
+    const galleryElement = document.getElementById(gallery);
+    galleryElement.innerHTML = "";
 
-async function fetchWorks() {
-    const response = await fetch('http://localhost:5678/api/works');
-    const works = await response.json();
-    return works;
-};
+    for (let i = 0; i < toDisplay.length; i++) {
+        const work = toDisplay[i];
+        const figureElement = document.createElement('figure');
+        const imageElement = document.createElement('img');
 
-fetchWorks().then(works => {
-    works;
+        imageElement.src = work.imageUrl;
 
-    function displayWorks(toDisplay, editMode, gallery) {
-        const galleryElement = document.getElementById(gallery);
-        galleryElement.innerHTML = "";
+        galleryElement.appendChild(figureElement);
+        figureElement.appendChild(imageElement);
 
-        for (let i = 0; i < toDisplay.length; i++) {
-            const work = toDisplay[i];
-            const figureElement = document.createElement('figure');
-            const imageElement = document.createElement('img');
+        if (editMode == false) {
+            const captionElement = document.createElement('figcaption');
+            imageElement.alt = work.title;
+            captionElement.innerText = work.title;
+            figureElement.appendChild(captionElement)
+        }
 
-            imageElement.src = work.imageUrl;
+        if (editMode == true) {
+            const trash = document.createElement('button');
 
-            galleryElement.appendChild(figureElement);
-            figureElement.appendChild(imageElement);
+            trash.classList.add('delete-button');
+            trash.id = work.id;
+            trash.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
 
-            if (editMode == false) {
-                const captionElement = document.createElement('figcaption');
-                imageElement.alt = work.title;
-                captionElement.innerText = work.title;
-                figureElement.appendChild(captionElement)
-            }
-
-            if (editMode == true) {
-                const trash = document.createElement('button');
-
-                trash.classList.add('delete-button');
-                trash.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
-
-                figureElement.appendChild(trash)
-            }
+            figureElement.appendChild(trash)
         }
     }
-
-    window.onload=function() {
-        displayWorks(works, false, 'gallery');
-        
-        if (sessionStorage.getItem('token')) {
-            displayWorks(works, true, editionMode())
-        }
-    };
-
-    // FILTERS //
-    const allBtn = document.querySelector('.all-filter');
-    allBtn.addEventListener('click', function() {
-        displayWorks(works, false, 'gallery');
-    } )
-
-    const categoryBtn = document.querySelectorAll('.category-filter');
-    for (let i = 0; i < categoryBtn.length; i++) {
-        categoryBtn[i].addEventListener('click', function() {
-            const worksToDisplay = works.filter(function (work) {
-                return work.category.name === categoryBtn[i].innerText.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-            });
-
-            displayWorks(worksToDisplay, false, 'gallery')
-        } )
-    }
-} )
+}
