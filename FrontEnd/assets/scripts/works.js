@@ -52,7 +52,7 @@ fetchWorks().then(works => {
     // FILTERS //
     const allBtn = document.querySelector('.all-filter');
     allBtn.addEventListener('click', function() {
-        displayWorks(works, false);
+        displayWorks(works, false, 'gallery');
     } )
 
     const categoryBtn = document.querySelectorAll('.category-filter');
@@ -62,7 +62,7 @@ fetchWorks().then(works => {
                 return work.category.name === categoryBtn[i].innerText.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
             });
 
-            displayWorks(worksToDisplay, false)
+            displayWorks(worksToDisplay, false, 'gallery')
         } )
     }
 } )
