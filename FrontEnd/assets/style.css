@@ -324,12 +324,26 @@ footer nav ul li {
 	position: relative;
 }
 
+.modal-box-dialog-form {
+	display: flex;
+	flex-direction: column;
+}
+
 .modal-box-dialog-close {
 	background-color: white;
 	border: none;
 	font-size: 21px;
 	position: absolute;
 	right: 30px;
+	top: 26px;
+}
+
+.modal-box-dialog-previous {
+	background-color: white;
+	border: none;
+	font-size: 21px;
+	position: absolute;
+	left: 30px;
 	top: 26px;
 }
 

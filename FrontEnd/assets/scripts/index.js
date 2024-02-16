@@ -10,32 +10,37 @@ async function fetchWorks() {
 fetchWorks().then(works => {
     works;
 
-    window.onload=function() {
+    if (sessionStorage.getItem('token')) {
+        const modaleBtn = document.createElement('a');
+
+        modaleBtn.classList.add('modal-link');
+        modaleBtn.href = '#editionMode';
+        modaleBtn.innerHTML = '<i class="fa-regular fa-pen-to-square"></i> Mode édition';
+
+        document.body.prepend(modaleBtn);
         displayWorks(works, false, 'gallery');
         
-        if (sessionStorage.getItem('token')) {
-            const modaleBtn = document.createElement('a');
+        modaleBtn.addEventListener('click', function(){
+            modale.showModal();
+            displayWorks(works, true, 'edit-gallery')
 
-            modaleBtn.classList.add('modal-link');
-            modaleBtn.href = '#editionMode';
-            modaleBtn.innerHTML = '<i class="fa-regular fa-pen-to-square"></i> Mode édition';
+            const deleteBtns = document.querySelectorAll('.delete-button');
+            deleteBtns.forEach(deleteBtn => {
+                deleteBtn.addEventListener('click', function(){
+                    const workID = deleteBtn.id;
+                    const token = sessionStorage.getItem('token');
 
-            document.body.prepend(modaleBtn);
-
-            modaleBtn.addEventListener('click', function(){
-                modale.showModal();
-                displayWorks(works, true, 'edit-gallery')
-
-                const deleteBtns = document.querySelectorAll('.delete-button');
-                deleteBtns.forEach(deleteBtn => {
-                    deleteBtn.addEventListener('click', function(){
-                        const workID = deleteBtn.id;
-                        const token = sessionStorage.getItem('token');
-                        modale.deleteWork(workID, token)
-                    })
+                    modale.deleteWork(workID, token).then(response => {
+                        response;
+                    });
                 })
-            });
-        }
+            })
+        });
+
+    } else {
+        window.onload=function() {
+            displayWorks(works, false, 'gallery');
+        };
     };
 
     // FILTERS //
