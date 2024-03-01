@@ -16,11 +16,13 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
+	color: #000000;
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
+	text-decoration: none;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -28,6 +30,11 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
+a:visited {
+	color: #000000;
+}
+
 body {
 	line-height: 1;
 }
@@ -64,6 +71,10 @@ header {
 	max-width: 1140px;
 }
 
+.header-menu-list-item-icon {
+	height: 1.2em;
+}
+
 main {
 	margin: 0 auto;
 	max-width: 59rem;
@@ -74,18 +85,22 @@ section {
 }
 
 h1{
+	color: #B1663C;
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	height: 42px;
+	justify-content: space-between;
 }
 
 h1 > span {
+	color: #B1663C;
 	font-family: 'Work Sans';
 	font-size: 10px;
 	letter-spacing: 0.1em;
+	text-transform: uppercase;
 }
 
 h2{
@@ -190,7 +205,8 @@ li:hover {
 
 #contact {
 	margin: auto;
-	width: 50%;
+	margin-top: 60px;
+	max-width: 379px;
 }
 #contact > * {
 	text-align: center;
@@ -212,12 +228,10 @@ li:hover {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	font-size: 1.2em;
 	height: 50px;
-	order: 1;
 }
 
 #contact label, .form-label {
 	margin: 2em 0 1em 0;
-	order: 1;
 }
 
 #contact textarea {
@@ -274,6 +288,7 @@ footer nav ul {
 }
 
 footer nav ul li {
+	font-size: 14px;
 	margin-right: 107px;
 }
 
