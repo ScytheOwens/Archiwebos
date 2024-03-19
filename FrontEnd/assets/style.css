@@ -16,11 +16,13 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
+	color: #000000;
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
+	text-decoration: none;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -28,6 +30,11 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
+a:visited {
+	color: #000000;
+}
+
 body {
 	line-height: 1;
 }
@@ -48,25 +55,36 @@ table {
 }
 /** end reset css**/
 html {
-	min-height: 100%;
+	height: 100%;
 }
 
 body {
 	background-color: #FFFEF8;
 	font-family: 'Work Sans';
 	font-size: 14px;
+	height: 100%;
 }
 
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px auto;
+	margin: 0 auto;
 	max-width: 1140px;
+	padding: 50px 150px;
+}
+
+header nav li a:hover {
+	font-weight: 600;
+}
+
+.header-menu-list-item-icon {
+	height: 1.2em;
 }
 
 main {
-	margin: 0 auto;
+	margin: 0 245px;
 	max-width: 59rem;
+	min-height: 70%;
 }
 
 section {
@@ -74,18 +92,22 @@ section {
 }
 
 h1{
+	color: #B1663C;
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	height: 42px;
+	justify-content: space-between;
 }
 
 h1 > span {
+	color: #B1663C;
 	font-family: 'Work Sans';
 	font-size: 10px;
 	letter-spacing: 0.1em;
+	text-transform: uppercase;
 }
 
 h2{
@@ -93,6 +115,23 @@ h2{
 	font-weight: 700;
 	font-size: 30px;
 	color: #1D6154
+}
+
+#modal-link-inline {
+	background-color: transparent;
+	color: #000;
+	display: inline;
+	font-size: 14px;
+	height: auto;
+    line-height: 29px;
+    margin-left: 26px;
+    position: absolute;
+	width: auto;
+}
+
+#modal-link-inline > i {
+	color: #000;
+	margin-right: 10px;
 }
 
 nav ul {
@@ -154,7 +193,7 @@ li:hover {
 	text-align: center;
 }
 
-.filter-btn {
+.btn {
 	background-color: transparent;
 	border: 1px solid #1D6154;
 	border-radius: 60px;
@@ -166,7 +205,7 @@ li:hover {
 	padding: 9px;
 }
 
-.filter-btn:hover {
+.btn:hover {
 	cursor: pointer;
 }
 
@@ -190,7 +229,8 @@ li:hover {
 
 #contact {
 	margin: auto;
-	width: 50%;
+	margin-top: 60px;
+	max-width: 379px;
 }
 #contact > * {
 	text-align: center;
@@ -212,12 +252,10 @@ li:hover {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	font-size: 1.2em;
 	height: 50px;
-	order: 1;
 }
 
 #contact label, .form-label {
 	margin: 2em 0 1em 0;
-	order: 1;
 }
 
 #contact textarea {
@@ -237,9 +275,14 @@ input[type="submit"] {
 }
 
 .section-login {
-	margin: 100px auto 0 auto;
+	margin: 0 auto;
+	padding-top: 100px;
 	text-align: center;
 	width: 23.7rem;
+}
+
+.section-login-link {
+	text-decoration: underline;
 }
 
 .login-form-submit:hover {
@@ -259,7 +302,7 @@ footer {
 	bottom: 0;
 	height: 3.8rem;
 	margin-top: 45px;
-	position: absolute;
+	position: relative;
 	right: 0;
 }
 
@@ -274,5 +317,157 @@ footer nav ul {
 }
 
 footer nav ul li {
+	font-size: 14px;
 	margin-right: 107px;
+}
+
+.modal-link {
+	background-color: black;
+	color: white;
+	display: block;
+	height: 59px;
+	line-height: 59px;
+	text-align: center;
+	text-decoration: none;
+	width: 100%;
+}
+
+.modal-link:visited, .modal-link:visited > i {
+	color: #fff;
+}
+
+.modal-box {
+	background-color: rgba(0, 0, 0, 0.3);
+	display: flex;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+.modal-box-dialog {
+	background-color: white;
+	border-radius: 10px;
+	margin: auto;
+	padding: 45px 105px;
+	position: relative;
+	text-align: center;
+	width: 420px;
+}
+
+.modal-box-dialog-title {
+	color: black;
+	font-size: 26px;
+	padding-top: 25px;
+}
+
+.modal-box-dialog-content {
+	border-bottom: 1px solid #B3B3B3;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	margin-top: 46px;
+	padding-bottom: 46px;
+}
+
+.modal-box-dialog-content > figure {
+	position: relative;
+}
+
+.modal-box-dialog-form {
+	display: flex;
+	flex-direction: column;
+	margin-top: 0;
+}
+
+.modal-box-dialog-close {
+	background-color: white;
+	border: none;
+	font-size: 21px;
+	position: absolute;
+	right: 30px;
+	top: 26px;
+}
+
+.modal-box-dialog-previous {
+	background-color: white;
+	border: none;
+	font-size: 21px;
+	position: absolute;
+	left: 30px;
+	top: 26px;
+}
+
+.delete-button {
+	align-items: center;
+	background-color: #000;
+	border: none;
+	border-radius: 3px;
+	color: #fff;
+	display: flex;
+	height: 17px;
+	justify-content: center;
+	padding: 0;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	width: 17px;
+}
+
+.fa-trash-can {
+	color: #fff;
+	font-size: smaller;
+}
+
+.modal-box-dialog-close:hover, .delete-button:hover {
+	cursor: pointer;
+}
+
+.modal-box-dialog-button {
+	margin-left: 0;
+	margin-top: 28px;
+}
+
+.modal-box-dialog-form-image {
+	align-items: center;
+	background-color: #E8F1F6;
+	display: flex;
+	flex-direction: column;
+	padding: 28px;
+	position: relative;
+	row-gap: 10px;
+}
+
+.preview {
+	height: 12.3rem;
+	position: absolute;
+	top: 0;
+}
+
+.form-label-button {
+	background-color: #C8D6DC;
+	border-radius: 50px;
+	color: #306685;
+	padding: 10px 33px;
+}
+
+.form-label-button:hover {
+	cursor: pointer;
+}
+
+.fa-image {
+	color: #B9C5CC;
+	font-size: 76px;
+}
+
+input[type="file"] {
+	opacity: 0;
+	position: absolute
+}
+
+.modal-box-dialog-form-image > p {
+	font-size: 10px;
+}
+
+.hidden {
+	display: none;
 }
