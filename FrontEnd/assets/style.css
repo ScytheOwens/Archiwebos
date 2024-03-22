@@ -82,7 +82,7 @@ header nav li a:hover {
 }
 
 main {
-	margin: 0 245px;
+	margin: 0 auto;
 	max-width: 59rem;
 	min-height: 70%;
 }
