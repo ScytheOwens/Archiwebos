@@ -1,3 +1,16 @@
+export async function fetchWorks() {
+    const response = await fetch('http://localhost:5678/api/works');
+    const works = await response.json();
+    return works;
+};
+
+export async function fetchCategories() {
+    const response = await fetch('http://localhost:5678/api/categories');
+    const categories = await response.json();
+
+    return categories;
+};
+
 export function displayWorks(toDisplay, editMode, gallery) {
     const galleryElement = document.getElementById(gallery);
     galleryElement.innerHTML = "";

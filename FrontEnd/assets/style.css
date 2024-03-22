@@ -418,13 +418,22 @@ footer nav ul li {
 	font-size: smaller;
 }
 
-.modal-box-dialog-close:hover, .delete-button:hover {
+.modal-box-dialog-close:hover, .delete-button:hover, .modal-box-dialog-previous:hover {
 	cursor: pointer;
 }
 
 .modal-box-dialog-button {
 	margin-left: 0;
 	margin-top: 28px;
+}
+
+.btn:disabled {
+	background-color: #A7A7A7;
+	border-color: #A7A7A7;
+}
+
+.btn:disabled:hover {
+	cursor: default;
 }
 
 .modal-box-dialog-form-image {

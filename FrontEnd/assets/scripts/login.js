@@ -47,6 +47,11 @@ async function fetchLogin(email, password) {
 
 function displayAlert(alertType, alertMessage) {
     const login = document.querySelector(".login-form");
+    
+    if (document.querySelector(".alert-box")) {
+        login.removeChild(document.querySelector(".alert-box"))
+    };
+
     const alert = document.createElement("div");
 
     alert.classList.add("alert-box", alertType);
