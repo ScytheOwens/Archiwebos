@@ -45,7 +45,7 @@ export function addModal() {
     boxDialog.innerHTML = '<h2 class="modal-box-dialog-title">Ajout photo</h2><form enctype="multipart/form-data" method="post" class="form add-work-form"><div class="modal-box-dialog-content modal-box-dialog-form"><div class="modal-box-dialog-form-image"><img class="preview"><i class="fa-regular fa-image"></i><label for="work-image" class="form-label-button">+ Ajouter photo</label><input type="file" id="work-image" name="image" accept="image/png, image/jpeg, image/jpg"/><p>jpg, png : 4Mo max</p></div><label for="work-title" class="form-label">Titre</label><input type="text" id="work-title" name="title" class="form-input"/><label for="work-category" class="form-label">Catégorie</label><select name="category" id="work-category" class="form-input"></select></div><input type="submit" name="submit" value="Valider" id="work-submit" class="btn modal-box-dialog-button active" disabled/></form><button class="modal-box-dialog-previous"><i class="fa-solid fa-arrow-left"></i></button><button class="modal-box-dialog-close"><i class="fa-solid fa-xmark"></i></button>'
 
     const previous = document.querySelector('.fa-arrow-left');
-    const closeBtns = [document.querySelector('.modal-box'), document.querySelector('.fa-xmark'), previous];
+    const closeBtns = [document.querySelector('.fa-xmark'), previous];
     hideModal(closeBtns);
 
     previous.addEventListener('click', function(){
